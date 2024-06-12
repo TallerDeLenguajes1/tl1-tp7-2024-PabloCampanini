@@ -75,7 +75,7 @@ public class Empleado
     }
 
     //Metodos
-    public int CalculadoraAntiguedad()
+    public int CalcularAntiguedad()
     {
         DateTime fechaActual = DateTime.Now;
 
@@ -89,7 +89,7 @@ public class Empleado
         return antiguedad;
     }
 
-    public int CalculadoraEdad()
+    public int CalcularEdad()
     {
         DateTime fechaActual = DateTime.Now;
 
@@ -105,16 +105,16 @@ public class Empleado
 
     public int FaltaJubilacion()
     {
-        int aniosFaltantes = 65 - CalculadoraEdad();
+        int aniosFaltantes = 65 - CalcularEdad();
 
         return aniosFaltantes;
     }
 
-    public double CalculadoraSalario()
+    public double CalcularSalario()
     {
         double Adicional = 0;
 
-        int antiguedad = CalculadoraAntiguedad();
+        int antiguedad = CalcularAntiguedad();
 
         if (antiguedad <= 20)
         {

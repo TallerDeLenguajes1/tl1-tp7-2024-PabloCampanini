@@ -1,6 +1,13 @@
 ﻿// See https://aka.ms/new-console-template for more information
 // Console.WriteLine("Hello, World!");
 
+
+
+
+// *----- Ejercicio 1 -----*
+
+
+/*
 using EspacioCalculadora;
 
 Calculadora calc = new Calculadora();
@@ -91,4 +98,51 @@ int OperacionElegida(string cadena, int seguir)
     }
 
     return seguir;
+}
+*/
+
+
+
+
+// *----- Ejercicio 2 -----*
+
+
+
+using EspacioEmpleado;
+
+Empleado empleado = new Empleado("German", "Parrado", new DateTime(1985, 8, 20), 'C', new DateTime(2010, 3, 1), 700000, Cargo.Ingeniero);
+
+Empleado empleado1 = new Empleado("Facundo", "Fernandez", new DateTime(2000, 6, 10), 's', new DateTime(2023, 8, 6), 500000, Cargo.Auxiliar);
+
+Empleado empleado2 = new Empleado("Jazmin", "Garcia", new DateTime(1970, 10, 25), 'c', new DateTime(1998, 6, 1), 800000, Cargo.Especialista);
+
+double PagarTotalSalarios = empleado.CalcularSalario() + empleado1.CalcularSalario() + empleado2.CalcularSalario();
+
+Console.WriteLine($"\n\n\t\t*----- Se necesitan ${PagarTotalSalarios} para pagar los salarios -----*");
+
+Empleado ProximoJubilar = empleado;
+
+if (empleado1.FaltaJubilacion() < ProximoJubilar.FaltaJubilacion())
+{
+    ProximoJubilar = empleado1;
+}
+
+if (empleado2.FaltaJubilacion() < ProximoJubilar.FaltaJubilacion())
+{
+    ProximoJubilar = empleado2;
+}
+
+InformacionDelEmpleado(empleado);
+InformacionDelEmpleado(empleado1);
+InformacionDelEmpleado(empleado2);
+
+Console.WriteLine("\n\nEl empleado que esta proximo a jubilarse es:");
+Console.WriteLine($"\n\t\t*----- {ProximoJubilar.Apellido}, {ProximoJubilar.Nombre} -----*\n\n");
+
+static void InformacionDelEmpleado(Empleado empleado)
+{
+    Console.WriteLine($"\nEmpleado: {empleado.Apellido}, {empleado.Nombre}");
+    Console.WriteLine($"\n\tEdad: {empleado.CalcularEdad()}\n\tAntiguedad: {empleado.CalcularAntiguedad()}");
+    Console.WriteLine($"\tFaltan {empleado.FaltaJubilacion()} anios para jubilarse");
+    Console.WriteLine($"\tSalario = ${empleado.CalcularSalario()}");
 }
