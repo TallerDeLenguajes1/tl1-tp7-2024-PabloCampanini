@@ -65,13 +65,13 @@ public class Empleado
     //Constructor
     public Empleado(string nombre, string apellido, DateTime fechaNacimiento, char estadoCivil, DateTime fechaIngreso, double sueldoBasico, Cargo cargo)
     {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.fechaNacimiento = fechaNacimiento;
-        this.estadoCivil = estadoCivil;
-        this.fechaIngreso = fechaIngreso;
-        this.sueldoBasico = sueldoBasico;
-        this.cargo = cargo;
+        this.Nombre = nombre;
+        this.Apellido = apellido;
+        this.FechaNacimiento = fechaNacimiento;
+        this.EstadoCivil = estadoCivil;
+        this.FechaIngreso = fechaIngreso;
+        this.SueldoBasico = sueldoBasico;
+        this.Cargo = cargo;
     }
 
     //Metodos
@@ -79,9 +79,9 @@ public class Empleado
     {
         DateTime fechaActual = DateTime.Now;
 
-        int antiguedad = fechaActual.Year - fechaIngreso.Year;
+        int antiguedad = fechaActual.Year - FechaIngreso.Year;
 
-        if (fechaActual.Month < fechaIngreso.Month || ((fechaActual.Month == fechaIngreso.Month) && (fechaActual.Day < fechaIngreso.Day)))
+        if (fechaActual.Month < FechaIngreso.Month || ((fechaActual.Month == FechaIngreso.Month) && (fechaActual.Day < FechaIngreso.Day)))
         {
             antiguedad--;
         }
@@ -93,9 +93,9 @@ public class Empleado
     {
         DateTime fechaActual = DateTime.Now;
 
-        int edad = fechaActual.Year - fechaNacimiento.Year;
+        int edad = fechaActual.Year - FechaNacimiento.Year;
 
-        if (fechaActual.Month < fechaNacimiento.Month || ((fechaActual.Month == fechaNacimiento.Month) && (fechaActual.Day < fechaNacimiento.Day)))
+        if (fechaActual.Month < FechaNacimiento.Month || ((fechaActual.Month == FechaNacimiento.Month) && (fechaActual.Day < FechaNacimiento.Day)))
         {
             edad--;
         }
@@ -122,20 +122,20 @@ public class Empleado
         }
         else
         {
-            Adicional = sueldoBasico * 0.25;
+            Adicional = SueldoBasico * 0.25;
         }
 
-        if (cargo == Cargo.Ingeniero || cargo == Cargo.Especialista)
+        if (Cargo == Cargo.Ingeniero || Cargo == Cargo.Especialista)
         {
             Adicional *= 1.50;
         }
 
-        if (estadoCivil == 'C' || estadoCivil == 'c')
+        if (EstadoCivil == 'C' || EstadoCivil == 'c')
         {
             Adicional += 150000;
         }
 
-        double Salario = sueldoBasico + Adicional;
+        double Salario = SueldoBasico + Adicional;
 
         return Salario;
     }
